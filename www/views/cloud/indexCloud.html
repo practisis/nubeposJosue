@@ -1,162 +1,5 @@
-<br/> <br/>
-<div class="row" id="contentStepSincro" style="display:none;" >
-		<div class="col-md-3" ></div>
-		<div class="col-md-6" >
-			
-				<div class="bs-example" data-example-id="simple-nav-justified">
-				<ul class="nav nav-tabs nav-justified">
-				  <li role="presentation" class="active"><a href="#"> <span class="badge">1</span> Productos</a></li>
-				  <li role="presentation"><a href="#"> <span class="badge">2</span> Facturas</a></li>
-				  <li role="presentation"><a href="#"> <span class="badge">3</span>  Clientes</a></li>
-				  <li role="presentation"><a href="#" >  <span class="badge">4</span> Final </a></li>
-				</ul>
-				<br><br>
-				<center> <i> <span id="txtSincro">Sincronizando Productos...</span> </i> </center>
-				<div class="progress" >
-					<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 25%"><span class="sr-only">25% Complete</span></div>
-				</div>
-			  </div>
-			  
-			
-			
-		</div>
-		<div class="col-md-3" ></div>
-	</div>
-<br/><br/>
-	
-	
-	<div class="row" style="margin:0 auto;display:block;" id="fadeRow" >
-		<div class="col-md-3" >
-		</div>
-		
-		<div class="col-md-6">
-		<div class="modal-content text-center" style="min-height: 263px;">
-			<div class="modal-header" style="background-image: url(http://www.practipos.com/img/parallax-bg.jpg);padding-top: 35px;
-		padding-bottom: 35px;
-		color: #fff;
-		border-radius: 4px 4px 0 0;
-		background-position: center top;font-size: 40px;    padding: 15px;
-		border-bottom: 1px solid #e5e5e5;
-		min-height: 16.42857143px;">
-			  NubePOS
-			</div>
-			<div class="modal-body" style="min-height: 266px;">
-			 <div id="divdatoslogin" style="overflow:auto;">
-			  <h3 style="-webkit-margin-before: 1em;
-		-webkit-margin-after: 1em;
-		-webkit-margin-start: 0px;
-		-webkit-margin-end: 0px;">Ingresa a tu sistema y <span style="color:#0893d2;">Empecemos!</span></h3>
-			  <span class="subtitle" style=" margin-bottom: 36px; margin-top: 0;font-size:16px;color:#9a9a9a;">Ingresa tus datos</span><br><br>
-			 
-			  <form method="post" class="contact-form form-validate4" id="myloginform" novalidate="novalidate">
-				<div class="form-group">
-				  <input class="form-control input-lg" type="text" id="user2" name="usuario" placeholder="Usuario" required="" value="josue2@practisis.com" autocomplete="off" aria-required="true">
-				</div>
-				<div class="form-group">
-				  <input type="password" id="pass2" name="mipass" value="1105097586" class="form-control input-lg" placeholder="Password" required="" autocomplete="off" aria-required="true">
-				</div>
-				<div class="form-group">
-					<a data-toggle="modal" data-target="#recuperarPass" href="">¿Olvidaste tu contraseña?</a><br/>  <a data-toggle="modal" data-target="#recuperarPass" href="javascript:void(0);" ontap="nuevaCuenta()">¿Crear Cuenta NubePOS?</a> 
-				</div>
-			   <button class="btn btn-primary"  id="btnvalida2" type="button" ontap="loginPractisis();">Login</button>
-			  </form>
-			  </div>
-			  
-			  <div id="varias">
-			  </div>
-			</div>
-		  </div>
-		</div>
-		
-		<div class="col-md-3" >
-		<div id="mensaje2"></div>
-		<input id="user" type="hidden" />
-		<input id="pass" type="hidden" />
-		</div>
-		
-	  </div> <!--End row -->
-	  <script>
-			function mostrarSignIn(){
-				$("#demoGratis").css("display" , "none");
-				$("#fadeRow").fadeIn();
-			
-			}
-			
-			function nuevaCuenta(){
-				$("#fadeRow").css("display" , "none");
-				$("#demoGratis").fadeIn();
-			}
-	  </script>
-	  <!-- Registro -->
-	  <div class="row" style="margin:0 auto;display:none;" id="demoGratis" >
-		<div class="col-md-3" >
-		</div>
-		
-		<div class="col-md-6">
-		<div class="modal-content text-center" style="min-height: 263px;">
-			<div class="modal-header" style="background-image: url(http://www.practipos.com/img/parallax-bg.jpg);padding-top: 35px;
-		padding-bottom: 35px;
-		color: #fff;
-		border-radius: 4px 4px 0 0;
-		background-position: center top;font-size: 40px;    padding: 15px;
-		border-bottom: 1px solid #e5e5e5;
-		min-height: 16.42857143px;">
-			  NubePOS
-			</div>
-			<div class="modal-body" style="min-height: 266px;">
-			 <div id="divdatoslogin" style="overflow:auto;">
-			  <h3 style="-webkit-margin-before: 1em;
-		-webkit-margin-after: 1em;
-		-webkit-margin-start: 0px;
-		-webkit-margin-end: 0px;">Solicita tu PractiPOS  <span style="color:#0893d2;">gratis!</span></h3>
-			  <span class="subtitle" style=" margin-bottom: 36px; margin-top: 0;font-size:16px;color:#9a9a9a;">No necesitas tarjeta de crédito</span><br><br>
-			 
-			   <div class="form-group">
-              <input class="form-control input-lg" type="text" name="nombres" id="nombres" placeholder="Tu nombre completo" required="" autocomplete="off">
-            </div>
 
-            <div class="form-group">
-              <input class="form-control input-lg" type="email" name="email" id="email" placeholder="E-mail" required="" autocomplete="off">
-            </div>
-
-            <div class="form-group">
-              <input type="text" name="telefono" id="telefono" class="form-control input-lg" placeholder="Teléfono" required="" autocomplete="off">
-            </div>
-			
-			<div class="form-group">
-              <input type="form-control input-lg" name="empresa" id="empresa" class="form-control input-lg" placeholder="Nombre de tu Negocio" required="" autocomplete="off">
-            </div>
-
-            <div class="form-group">
-              <textarea style="height: 80px;" id="observacion" name="observacion" class="form-control input-lg" placeholder="Observaciones" required="" autocomplete="off"></textarea>
-            </div>
-			
-			
-			<div class="form-group">
-					<a data-toggle="modal" data-target="#recuperarPass" onclick="mostrarSignIn();" href="">¿Iniciar sesión?</a><br/> 
-			</div>
-				
-			
-<input class="btn btn-md btn-primary btn-center" type="button" value="Enviar" onclick="validaremail();">
-			  </div>
-			  
-			  <div id="varias">
-			  </div>
-			</div>
-		  </div>
-		</div>
-		
-		<div class="col-md-3" >
-		<div id="mensaje2"></div>
-		<input id="user" type="hidden" />
-		<input id="pass" type="hidden" />
-		</div>
-		
-	  </div> <!--End row -->
-	  
-	  
-	  
-	<div  style="display:none;background: rgba(0,0,0 0.8) none repeat scroll 0% 0%; width: 60%; height: auto; position:; z-index: 20000; text-align: center;margin:0 auto;margin-top:30px;" id='cuentasSinc'>
+	<div  style="background: rgba(0,0,0 0.8) none repeat scroll 0% 0%; width: 60%; height: auto; position:; z-index: 20000; text-align: center;margin:0 auto;margin-top:30px;" id='cuentasSinc'>
 		<div class='row' id='popupLogin2' style="padding-top:6%; box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75); background-color: #ffffff; color: #000000; margin-left: auto; margin-right: auto;overflow:auto;height:130px;border:10px solid #2EC1CC;">
 			<div class='col-md-5'>
 				<button type="button" class="btn btn-primary" onclick='nuevaCuenta()'>Crear Nueva Cuenta NubePOS</button>
@@ -168,15 +11,9 @@
 		</div>
 	</div>
 
-	<!--
+
 	<div id="popupLoginNuevo" style="display:none;width:50%;padding:20px;margin-top: 10px; box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75); background-color: #ffffff; color: #000000; margin-left: auto; margin-right: auto;overflow:auto;height:350px;">
-
-	 
-	
-
-		<div class="encabezadorojo" style='position:relative;height:30px;font-size:20px;padding-left:10px;'>
-
-		LOGIN PRACTISIS<img src='images/xcierre.png' style='position:absolute; top:3px; right:5px; cursor:pointer;' onclick='cerrarLogin2()'/></div>
+		<div class="encabezadorojo" style='position:relative;height:30px;font-size:20px;padding-left:10px;'>LOGIN PRACTISIS<img src='images/xcierre.png' style='position:absolute; top:3px; right:5px; cursor:pointer;' onclick='cerrarLogin2()'/></div>
 		<div style='background-color:#E0DEDE; padding-top:20px; padding-bottom:20px;' id='contieneEmpresasNuevo'>
 			<div class="row" style="padding-top: 10px;padding-bottom: 10px;">
 				<div class="col-md-12"  style="text-align: center;">
@@ -204,7 +41,6 @@
 			</div>
 		</div>
 	</div>
-	-->
 	
 	<div id="contenedorNuevaCuenta" style='display:none;margin-top:50px;'>
 		<img src='images/xcierre.png' style='position:absolute; top:3px; right:5px; cursor:pointer;' onclick='cerrarLogin3()'/>
@@ -220,14 +56,13 @@
 				<td>
 					<div>
 						<i class="fa fa-cloud-upload fa-5x" onclick='subeDatos()' id='sube1'></i>
-							<h1 onclick='subeDatos()' >Sube1.1</h1>
+							
 						<i class="fa fa-cloud-upload fa-5x" id='sube2' style='display:;' onclick='subeFacturas()'></i>
 					</div>
 				</td>
 				<td>
 					<div style='display:none;'>
 						<i class="fa fa-download fa-5x" onclick='subeClientes()' id='sube1'></i>
-						<h1>Sube1.2</h1>
 					</div>
 				</td>
 			</tr>
@@ -270,9 +105,6 @@
 			</tr>
 		</table>	
 	</div>
-	
-	
-	
 	<script type="text/javascript">
 		
 		verificarEmpresas();
@@ -733,5 +565,5 @@
 				},errorCB,successCB);
 				$('#myModal').modal('hide');
 			}
-			//$("#fadeRow").fadeIn("slow");
+				
 	</script>

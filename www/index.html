@@ -58,12 +58,11 @@
 				<i class="fa fa-bars"></i></a>
 					
 				<!-- Logo -->
-				<div class="logo" >
-					<a href="javascript:void(0);"  >
+				<div class="logo">
+					<a href="#/">
 						<span>NubePOS</span>
 					</a>
 				</div>
-				
 				<!-- <div style='background-color:#23AE89;width:200px;padding-top:15px;padding-bottom:15px;position:relative;z-index:2000;float:right;text-align:center;margin-right:10%;border-radius:10px;cursor:pointer;'>
 					Sincronizar
 				</div> -->
@@ -93,46 +92,45 @@
 						data-collapse-nav
 						data-slim-scroll
 						data-highlight-active>
-						<li><a ontap="envia('dashboard');" href='#'> <i class="fa fa-dashboard menuItem" style='color:#FFF;'><span class="icon-bg bg-danger menu-button"></span></i><span data-i18n="Resumen">Resumen</span></a>
-						
+						<li><a onclick="envia('dashboard');" href='#'> <i class="fa fa-dashboard menuItem" style='color:#FFF;'><span class="icon-bg bg-danger menu-button"></span></i><span data-i18n="Resumen">Resumen</span></a>
 						</li>
 						<li>
 							<a href='#'><i class="fa fa-usd  menuItem" style='color:#FFF;'><span class="icon-bg bg-orange"></span></i><span data-i18n="Ventas">Ventas</span><span style='padding-left:5px;' class="fa fa-caret-down" ></span></a>
 							<ul>
-								<li><a href='#'><i class="fa fa-caret-right"></i><span ontap="envia('nubepos/nubepos/');" data-i18n="Punto de Venta">Punto de Venta</span></a></li>
-								<li><a href="#"><i class="fa fa-caret-right"></i><span ontap="envia('historial');" data-i18n="Historial">Historial</span></a></li>
+								<li><a href='#'><i class="fa fa-caret-right"></i><span onclick="envia('nubepos/nubepos/');" data-i18n="Punto de Venta">Punto de Venta</span></a></li>
+								<li><a href="#"><i class="fa fa-caret-right"></i><span onclick="envia('historial');" data-i18n="Historial">Historial</span></a></li>
 							</ul>
 						</li>
 						<li>
 							<a href="#"><i class="fa fa-diamond menuItem" style='color:#FFF;'><span class="icon-bg bg-warning"></span></i><span data-i18n="Productos">Productos</span><span style='padding-left:5px;' class="fa fa-caret-down" ></span></a>
 							<ul>
-								<li><a href='#'><i class="fa fa-caret-right"></i><span  ontap="envia('listaproductos');" data-i18n="Lista de Productos">Lista de Productos</span></a></li>
-								<li><a href="#"><i class="fa fa-caret-right"></i><span ontap="envia('nuevoproducto');" data-i18n="Nuevo Producto">Nuevo Producto</span></a></li>
+								<li><a href='#'><i class="fa fa-caret-right"></i><span  onclick="envia('listaproductos');" data-i18n="Lista de Productos">Lista de Productos</span></a></li>
+								<li><a href="#"><i class="fa fa-caret-right"></i><span onclick="envia('nuevoproducto');" data-i18n="Nuevo Producto">Nuevo Producto</span></a></li>
 							</ul>
 						</li>
 						<li>
 							<a href="#"><i class="fa fa-barcode menuItem" style='color:#FFF;'><span style='color:#FFF;' class="icon-bg bg-success" ></span></i><span data-i18n="Inventarios">Inventarios<span style='padding-left:5px;' class="fa fa-caret-down" ></span></span></a>
 							<ul>
-								<li><a href='#'><i class="fa fa-caret-right"></i><span  ontap="alert('Falta');" data-i18n="Toma de Inventario">Toma de Inventario</span></a></li>
+								<li><a href='#'><i class="fa fa-caret-right"></i><span  onclick="envia('tomainventario');" data-i18n="Toma de Inventario">Toma de Inventario</span></a></li>
 								<li><a href="#"><i class="fa fa-caret-right"></i><span data-i18n="Ver Inventario">Ver Inventario</span></a></li>
 							</ul>
 						</li>
 						<li>
 							<a href="#"><i class="fa fa-users menuItem" style='color:#FFF;'><span class="icon-bg bg-info"></span></i><span data-i18n="Clientes">Clientes</span><span style='padding-left:5px;' class="fa fa-caret-down" ></span></a>
 								<ul>
-								<li><a href='#'><i class="fa fa-caret-right"></i><span ontap="envia('listaclientes');" data-i18n="Lista de Clientes">Lista de Clientes</span></a></li>
-								<li><a href="#"><i class="fa fa-caret-right"></i><span ontap="envia('nuevocliente');" data-i18n="Nuevo Cliente">Nuevo Cliente</span></a></li>
+								<li><a href='#'><i class="fa fa-caret-right"></i><span onclick="envia('listaclientes');" data-i18n="Lista de Clientes">Lista de Clientes</span></a></li>
+								<li><a href="#"><i class="fa fa-caret-right"></i><span onclick="envia('nuevocliente');" data-i18n="Nuevo Cliente">Nuevo Cliente</span></a></li>
 								</ul>
 						</li>
 						<li>
-							<a ontap="envia('cloud');" href='#'> 
+							<a onclick="envia('cloud');" href='#'> 
 								<i class="fa fa-dashboard menuItem" style='color:#FFF;'>
 									<span class="icon-bg bg-primary"></span>
 								</i>
 								<table style='' width='75%'>
 									<tr>
 										<td width='40%'>
-											<span data-i18n="Cloud">Iniciar Sesión</span><br/>
+											<span data-i18n="Cloud">Cloud</span><br/>
 										</td>
 										<td align='right' width='60%'>
 											<!--<span id='id_emp' style='font-size:12px;color:#31B0D5;'></span>-->
@@ -176,7 +174,7 @@
 				<br/>
 				<br/>
 				<div id="popupLogin" style="padding:20px;margin-top: 1000px; box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75); background-color: #ffffff; color: #000000; margin-left: auto; margin-right: auto;overflow:auto;height:350px;">
-					<div class="encabezadorojo" style='position:relative; height:30px; font-size:20px;'>LOGIN<img src='images/xcierre.png' style='position:absolute; top:3px; right:5px; cursor:pointer;' ontap='cerrarLogin()'/></div>
+					<div class="encabezadorojo" style='position:relative; height:30px; font-size:20px;'>LOGIN<img src='images/xcierre.png' style='position:absolute; top:3px; right:5px; cursor:pointer;' onclick='cerrarLogin()'/></div>
 					<div style='background-color:#E0DEDE; padding-top:20px; padding-bottom:20px;' id='contieneEmpresas'>
 						<div class="row" style="padding-top: 10px;padding-bottom: 10px;">
 							<div class="col-md-12"  style="text-align: center;">
@@ -196,7 +194,7 @@
 												<input type="password" id="pass" class="form-control" />
 												</div>
 												<div style="height:10px;"></div>
-												<button class="btn btn-default" id='btnvalida' type="button" ontap="valida();">Login</button>
+												<button class="btn btn-default" id='btnvalida' type="button" onclick="valida();">Login</button>
 											</div>
 									</div>
 											<div id="mensaje"></div>
@@ -212,7 +210,6 @@
 <script type="text/javascript" src="barcodescanner.js"></script>
 <script type="text/javascript" src="js/jsscan.js"></script>
 <script type="text/javascript" src="js/jsscanprod.js"></script>
-<script src="js/hammer.js" ></script>
 
 <script>
 	
@@ -221,20 +218,13 @@
 <script>
 	$( document ).ready(function() {
 			console.log( "listos espartanos!" );
-			
-			var smallerMenu = false;	
-			$('.modal').each(centerModal);
-			$('#myModal').modal('show');
-			//envia('dashboard');
-			envia('cloud');
-			onDeviceReady();
-			
-			
-			
-			
-			function saberNuevos(){
-				var db = window.openDatabase("Database", "1.0", "PractisisMobile", 200000);
-				db.transaction(function(tx){
+			//setInterval(saberNuevos, 3000);
+		});
+	//enviaConsultaApi(568);
+	
+	function saberNuevos(){
+			var db = window.openDatabase("Database", "1.0", "PractisisMobile", 200000);
+			db.transaction(function(tx){
 				var excluir = 0;
 				tx.executeSql('SELECT * from logActualizar where final <> ? ',[excluir],function(tx,results){
 					var actualizar='';
@@ -249,287 +239,73 @@
 					
 				});
 			
-				},errorCB,successCB);
-			}
-		
-		
-			function muestraActualiziones(datos){
-					$('#recibeAlertasActualizaciones').html("<table style='width:100%;' border='0' cellpadding='10px' class='table table-striped' ><tr><th>Accion</th><th>Cantidad</th></tr>"+datos+"</table>");
-					$('#alertaNuevos').fadeIn('slow');
-					setTimeout(function() {
-						$('#alertaNuevos').fadeOut('slow');
-					},1500);
-					
-				}
-			
-	
-
-
-
-		function centerModal(){ 
-			$(this).css('display', 'block');
-			var $dialog = $(this).find(".modal-dialog");
-			var offset = ($(window).height() - $dialog.height()) / 2;
-			// Center modal vertically in window
-			$dialog.css("margin-top", offset);
+			},errorCB,successCB);
 		}
-
-		$(window).on('resize',function(){
-				$('.modal:visible').each(centerModal);
-				if($(this).width() >= 768){
-					$('#nav-container').data('isshown','false');
-					}
-			
-				if($('#nav-container').data('isshown') == 'false'){
-					if($(this).width() >= 768){
-						$('#nav-container').css('left','0px');
-						$('#content').css('left','220px');
-						$('.menuItem').css('left','0px');
-						smallerMenu = false;
-						}
-					else{
-						$('#nav-container').css('left','-220px');
-						$('#content').css('left','0px');
-						$('.menuItem').css('left','0px');
-						}
-					}
-		});
-				
-		$('.menu-button').on('click',function(){
-				if($('#nav-container').css('left') == '0px'){
-					$('#nav-container').css('left','-220px').data('isshown','false');
-					$('#content').css('left','0px');
-					}
-				else{
-					$('#nav-container').css('left','0px').data('isshown','true');
-					$('#content').css('left','220px');
-					}
-		});
 		
-		$('.toggle-min').on('click',function(){
-			if ($('#nav-container, .menuItem, #content').is(':animated')){
-				return false;
-			}
-			$('li').find('ul').slideUp();
 		
-			if(smallerMenu === false){
-				$('#content').animate({
-					left : '50px'
-					});
-				
-				$('#nav-container').animate({
-					left : '-220px',
-					},function(){
-						$('.menuItem').each(function(index,object){
-							$(this).delay(index * 100);
-							
-							$(object).animate({
-								left : '220px'},{
-									duration: 800,
-									easing: 'swing'
-									});
-							});
-						});
-				
-				setTimeout(function(){
-					$('.menuItem').animate({
-						left : '170px'
-						});
-						
-					$('#nav-container').animate({
-						left : '-170px'
-						});
-					},1500)
-				
-				smallerMenu = true;
-				}
-			else{
-				$('li.open').find('ul').slideDown();
-			
-				$('#content').animate({
-					left : '220px'
-					});
-					
-				$('#nav-container').animate({
-					left : '0'
-					});
-				
-				$('.menuItem').animate({
-					left : '0px'
-					});
-					
-				smallerMenu = false;
-				}
-			});
-		
-		$('#nav > li').on('mouseenter',function(){
-			if(smallerMenu === true){
-				if($(this).closest('li').children('ul').length > 0){
-					var menu = '';
-					$(this).closest('li').children('ul').children('li').each(function(){
-						
-						var getHTML = $(this).html();
-						var newHTML = $(getHTML);
-						var url = newHTML.attr('href');
-						newHTML.find('i').css({'padding' : '0px', 'padding-left' : '10px', 'padding-right' : '10px', 'text-align' : 'left'});
-						menu += '<li style="text-align: left;"><a style="padding: 0px;" href="'+ url +'">'+ newHTML.html() +'</a></li>';
-						});
-						
-					$(this).find('i:first').append('<div class="dynMenu" style="background-color: #f1f1f1; color: #333333; left: 50px; width: 200px; font-family: Roboto,Arial,Helvetica,sans-serif; box-shadow: 1px 0px 6px 0px rgba(50, 50, 50, 0.64); top: 0; position: absolute; z-index: 999999;"><ul style="display: block;">'+ menu +'</div>');
-					}
-				}
-		});
-			
-			$('#nav > li').on('mouseleave',function(){
-				$('.dynMenu').remove();
-			});
-
-			$('#nav li').on('click',function(event){
-				if(smallerMenu === false){
-					event.stopPropagation();
-					if($('#nav > li > a').attr('href') == '#'){
-						if($(this).find('ul').length > 0){
-							if($(this).find('ul').css('display') == 'block'){
-								$('#nav-wrapper ul#nav li ul').removeClass('open');
-								$('#nav-wrapper ul#nav li ul').slideUp();
-								}
-							else{
-								$('#nav-wrapper ul#nav li').removeClass('open');
-								$('#nav-wrapper ul#nav li ul').slideUp();
-								$(this).addClass('open');
-								$(this).find('ul').slideDown();
-								}
-							}
-						}
-				}else{
-					if($(this).closest('li').children('ul').length > 0){
-						$('.dynMenu').remove();
-						var menu = '';
-						$(this).closest('li').children('ul').children('li').each(function(){
-							var getHTML = $(this).html();
-							var newHTML = $(getHTML);
-							newHTML.find('i').css({'padding' : '0px', 'padding-left' : '10px', 'padding-right' : '10px', 'text-align' : 'left'});
-							
-							menu += '<li style="text-align: left;">'+ newHTML.html() +'</li>';
-							});
-							
-						$(this).find('i:first').append('<div class="dynMenu" style="background-color: #f1f1f1; color: #333333; left: 50px; width: 200px; font-family: Roboto,Arial,Helvetica,sans-serif; box-shadow: 1px 0px 6px 0px rgba(50, 50, 50, 0.64); top: 0; position: absolute; z-index: 999999;"><ul style="display: block;">'+ menu +'</div>');
-						}
-					}
-				});
-	
-			
-				
-				
-	
-			
-		});
-	
-	DOMOnTap();
-	function DOMOnTap(){
-			
-				$("*[ontap]").each(function(){
-					var element=$(this);
-					var hammertime = Hammer(element).on("tap", function(event) {
-						ev=element.attr("ontap");
-						eval(ev);
-					});
-				});
-			
-			}
-			
-		function envia(donde){
-				//location.href="index.html#/"+donde;
-				
-					var lugar='';
-					$('#myModal').modal('show');
-					if(donde=='dashboard')
-					lugar="views/dashboard.html";
-					if(donde=='nubepos/nubepos/')
-					lugar="views/nubepos/nubepos.html";
-						//lugar='views/clientes/listaclientes.html';
-					if(donde=='listaproductos')
-					lugar="views/productos/listaproductos.html";
-					if(donde=='nuevoproducto')
-					lugar="views/productos/nuevoproducto.html";
-					if(donde=='listaclientes')
-					lugar="views/clientes/listaclientes.html";
-					if(donde=='nuevocliente')
-					lugar="views/clientes/nuevocliente.html";
-					if(donde=='historial')
-					lugar="views/facturacion/historial.html";
-					if(donde=='cloud')
-					lugar="views/cloud/indexCloud.html";
-					$('#myModal').delay(1500).modal('hide');
-					$('#content').load(lugar,function(){
-						$('#myModal').modal('hide');
-						DOMOnTap();
-					});
-				}
-	
-	/*Ajax Load Html out document.ready scripts */
+	function muestraActualiziones(datos){
+			$('#recibeAlertasActualizaciones').html("<table style='width:100%;' border='0' cellpadding='10px' class='table table-striped' ><tr><th>Accion</th><th>Cantidad</th></tr>"+datos+"</table>");
+			$('#alertaNuevos').fadeIn('slow');
+			setTimeout(function() {
+				$('#alertaNuevos').fadeOut('slow');
+			},1500);
+			//setTimeout(function() {
+				//$('#recibeAlertasActualizaciones').fadeOut('slow');
+			//}, 5000);
+		}
 	function recibeConsultaApi(id_emp){
-			$("#fadeRow").fadeOut();
-			 $("#contentStepSincro").fadeIn();
-				localStorage.setItem("empresa", id_emp);
-				
-				 var empresa = localStorage.getItem('empresa');
-				 $('#id_emp').html('Emp'+empresa);
-				 
-				var db = window.openDatabase("Database", "1.0", "PractisisMobile", 200000);
-				db.transaction(function(tx){
-					tx.executeSql('SELECT COUNT(id) as cuantos FROM empresa',[],function(tx,res){
-						var existen=res.rows.item(0).cuantos;
-						if(existen==0){
-							
-							db.transaction(
-								function (tx){
-									tx.executeSql('INSERT INTO empresa (nombre) VALUES (?);',[id_emp],
-									function(tx,res){
-										console.log("Insert ID Empresa Sql:"+res.insertId);
-										console.log(res);
-										//envia('cloud');
-										
-									});				
-								},errorCB,successCB
-							);
-						}
-					});
-				
-				},errorCB,successCB);
-		/*
-				setTimeout(function(){
-					cerrarLogin2()
-				}, 2000);*/
-				/*
-				setTimeout(function(){
-					$('#cuentasSinc').css('display','none');
-					$('#mainDivSinc').fadeIn('slow');
-				}, 3000);
-		*/
-			}
-	
-	
-		function enviaConsultaApi(id){
-			$.post('https://www.practisis.net/nubeposboot/www/ajax/dataservice.php',{
-				id : id 
-			}).done(function(response){
-				var arraydatos=JSON.parse(response);
-				//alert(response);
-				$('#empresaName').html(arraydatos.empresa.nombre);
-				$('#nemp').html("Emp. "+arraydatos.empresa.num);
-				$('#jsonProductos').html(arraydatos.productos);
-				$('#jsonCategorias').html(arraydatos.categorias);
-				$('#jsonformaspago').html(arraydatos.formaspago);
-				$('#jsonmisclientes').html(arraydatos.clientes);
-				$('#jsoncaja').html(arraydatos.cajas);
-				$('#loginPractisis').fadeOut('fast');
-				Ingresaproductos();
-				
+		
+		localStorage.setItem("empresa", id_emp);
+		
+		 var empresa = localStorage.getItem('empresa');
+		 $('#id_emp').html('Emp'+empresa);
+		 
+		var db = window.openDatabase("Database", "1.0", "PractisisMobile", 200000);
+		db.transaction(function(tx){
+			tx.executeSql('SELECT COUNT(id) as cuantos FROM empresa',[],function(tx,res){
+				var existen=res.rows.item(0).cuantos;
+				if(existen==0){
+					db.transaction(
+						function (tx){
+							tx.executeSql('INSERT INTO empresa (nombre) VALUES (?);',[id_emp],
+							function(tx,res){
+								console.log("vamos:"+res.insertId);
+								envia('cloud');
+							});				
+						},errorCB,successCB
+					);
+				}
 			});
-		}
-	
-	
+		
+		},errorCB,successCB);
+		
+		setTimeout(function(){
+			cerrarLogin2()
+		}, 2000);
+		setTimeout(function(){
+			$('#cuentasSinc').css('display','none');
+			$('#mainDivSinc').fadeIn('slow');
+		}, 3000);
+		
+	}
+	function enviaConsultaApi(id){
+		$.post('https://www.practisis.net/nubeposboot/www/ajax/dataservice.php',{
+			id : id 
+		}).done(function(response){
+			var arraydatos=JSON.parse(response);
+			//alert(response);
+			$('#empresaName').html(arraydatos.empresa.nombre);
+			$('#nemp').html("Emp. "+arraydatos.empresa.num);
+			$('#jsonProductos').html(arraydatos.productos);
+			$('#jsonCategorias').html(arraydatos.categorias);
+			$('#jsonformaspago').html(arraydatos.formaspago);
+			$('#jsonmisclientes').html(arraydatos.clientes);
+			$('#jsoncaja').html(arraydatos.cajas);
+			$('#loginPractisis').fadeOut('fast');
+			Ingresaproductos();
+			//console.log(arraydatos);
+		});
+	}
 	function abrirLogin(){
 	$('#loginPractisis').fadeIn(function(){
 			$('#popupLogin').animate({
@@ -646,17 +422,6 @@
 		xmlhttp.send(null);
 	}  
 
-	function loginPractisis(){
-		$('#btnvalida2').html="<img src='images/loader.gif' width='20px'/>";
-		var quien=$("#user2").val();
-		var pass=$("#pass2").val();	
-		//var pass=document.getElementById("pass2").value;
-		$.get("https://www.practisis.net/loginNubeposExistente.php?id="+quien+"&pass="+pass).done(function(data){
-			if(data != 'error'){
-				$("#divdatoslogin").html(data);
-			}
-		});
-	}
 	function valida2(){
 		document.getElementById('btnvalida2').innerHTML="<img src='images/loader.gif' width='20px'/>";
 		var quien=document.getElementById("user2").value;
@@ -669,7 +434,6 @@
 		if (xmlhttp.readyState==4){
 			if(xmlhttp.status==200){
 					var respuesta=xmlhttp.responseText;
-					alert(respuesta);
 					console.log($.trim(respuesta));
 					if (respuesta.trim()!='error'){
 						$('#contieneEmpresasNuevo').html(respuesta);
@@ -685,13 +449,191 @@
 		xmlhttp.send(null);
 	}  
 
+var smallerMenu = false;
+$(document).ready(function(){
+	$('.modal').each(centerModal);
+	$('#myModal').modal('show');
+	envia('dashboard');
+	onDeviceReady();
+});
 
+function centerModal(){ 
+	$(this).css('display', 'block');
+	var $dialog = $(this).find(".modal-dialog");
+	var offset = ($(window).height() - $dialog.height()) / 2;
+	// Center modal vertically in window
+	$dialog.css("margin-top", offset);
+}
+
+$(window).on('resize',function(){
+		$('.modal:visible').each(centerModal);
+		if($(this).width() >= 768){
+			$('#nav-container').data('isshown','false');
+			}
 	
+		if($('#nav-container').data('isshown') == 'false'){
+			if($(this).width() >= 768){
+				$('#nav-container').css('left','0px');
+				$('#content').css('left','220px');
+				$('.menuItem').css('left','0px');
+				smallerMenu = false;
+				}
+			else{
+				$('#nav-container').css('left','-220px');
+				$('#content').css('left','0px');
+				$('.menuItem').css('left','0px');
+				}
+			}
+});
+		
+$('.menu-button').on('click',function(){
+		if($('#nav-container').css('left') == '0px'){
+			$('#nav-container').css('left','-220px').data('isshown','false');
+			$('#content').css('left','0px');
+			}
+		else{
+			$('#nav-container').css('left','0px').data('isshown','true');
+			$('#content').css('left','220px');
+			}
+});
+		
+	$('.toggle-min').on('click',function(){
+		if ($('#nav-container, .menuItem, #content').is(':animated')){
+			return false;
+		}
+		$('li').find('ul').slideUp();
 	
+		if(smallerMenu === false){
+			$('#content').animate({
+				left : '50px'
+				});
+			
+			$('#nav-container').animate({
+				left : '-220px',
+				},function(){
+					$('.menuItem').each(function(index,object){
+						$(this).delay(index * 100);
+						
+						$(object).animate({
+							left : '220px'},{
+								duration: 800,
+								easing: 'swing'
+								});
+						});
+					});
+			
+			setTimeout(function(){
+				$('.menuItem').animate({
+					left : '170px'
+					});
+					
+				$('#nav-container').animate({
+					left : '-170px'
+					});
+				},1500)
+			
+			smallerMenu = true;
+			}
+		else{
+			$('li.open').find('ul').slideDown();
+		
+			$('#content').animate({
+				left : '220px'
+				});
+				
+			$('#nav-container').animate({
+				left : '0'
+				});
+			
+			$('.menuItem').animate({
+				left : '0px'
+				});
+				
+			smallerMenu = false;
+			}
+		});
+		
+	$('#nav > li').on('mouseenter',function(){
+		if(smallerMenu === true){
+			if($(this).closest('li').children('ul').length > 0){
+				var menu = '';
+				$(this).closest('li').children('ul').children('li').each(function(){
+					
+					var getHTML = $(this).html();
+					var newHTML = $(getHTML);
+					var url = newHTML.attr('href');
+					newHTML.find('i').css({'padding' : '0px', 'padding-left' : '10px', 'padding-right' : '10px', 'text-align' : 'left'});
+					menu += '<li style="text-align: left;"><a style="padding: 0px;" href="'+ url +'">'+ newHTML.html() +'</a></li>';
+					});
+					
+				$(this).find('i:first').append('<div class="dynMenu" style="background-color: #f1f1f1; color: #333333; left: 50px; width: 200px; font-family: Roboto,Arial,Helvetica,sans-serif; box-shadow: 1px 0px 6px 0px rgba(50, 50, 50, 0.64); top: 0; position: absolute; z-index: 999999;"><ul style="display: block;">'+ menu +'</div>');
+				}
+			}
+	});
+		
+	$('#nav > li').on('mouseleave',function(){
+		$('.dynMenu').remove();
+	});
+
+	$('#nav li').on('click',function(event){
+		if(smallerMenu === false){
+			event.stopPropagation();
+			if($('#nav > li > a').attr('href') == '#'){
+				if($(this).find('ul').length > 0){
+					if($(this).find('ul').css('display') == 'block'){
+						$('#nav-wrapper ul#nav li ul').removeClass('open');
+						$('#nav-wrapper ul#nav li ul').slideUp();
+						}
+					else{
+						$('#nav-wrapper ul#nav li').removeClass('open');
+						$('#nav-wrapper ul#nav li ul').slideUp();
+						$(this).addClass('open');
+						$(this).find('ul').slideDown();
+						}
+					}
+				}
+		}else{
+			if($(this).closest('li').children('ul').length > 0){
+				$('.dynMenu').remove();
+				var menu = '';
+				$(this).closest('li').children('ul').children('li').each(function(){
+					var getHTML = $(this).html();
+					var newHTML = $(getHTML);
+					newHTML.find('i').css({'padding' : '0px', 'padding-left' : '10px', 'padding-right' : '10px', 'text-align' : 'left'});
+					
+					menu += '<li style="text-align: left;">'+ newHTML.html() +'</li>';
+					});
+					
+				$(this).find('i:first').append('<div class="dynMenu" style="background-color: #f1f1f1; color: #333333; left: 50px; width: 200px; font-family: Roboto,Arial,Helvetica,sans-serif; box-shadow: 1px 0px 6px 0px rgba(50, 50, 50, 0.64); top: 0; position: absolute; z-index: 999999;"><ul style="display: block;">'+ menu +'</div>');
+				}
+			}
+		});
 	
-	
-	
-     
-    
+	function envia(donde){
+	//location.href="index.html#/"+donde;
+		var lugar='';
+		$('#myModal').modal('show');
+		if(donde=='dashboard')
+		lugar="views/dashboard.html";
+		if(donde=='nubepos/nubepos/')
+		lugar="views/nubepos/nubepos.html";
+			//lugar='views/clientes/listaclientes.html';
+		if(donde=='listaproductos')
+		lugar="views/productos/listaproductos.html";
+		if(donde=='nuevoproducto')
+		lugar="views/productos/nuevoproducto.html";
+		if(donde=='listaclientes')
+		lugar="views/clientes/listaclientes.html";
+		if(donde=='nuevocliente')
+		lugar="views/clientes/nuevocliente.html";
+		if(donde=='historial')
+		lugar="views/facturacion/historial.html";
+		if(donde=='cloud')
+		lugar="views/cloud/indexCloud.html";
+		$('#myModal').delay(1500).modal('hide');
+		$('#content').load(lugar,function(){
+		    $('#myModal').modal('hide');
+		});
+	}
 </script>
 </html>

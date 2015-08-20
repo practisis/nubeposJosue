@@ -1,0 +1,529 @@
+
+	<div  style="background: rgba(0,0,0 0.8) none repeat scroll 0% 0%; width: 60%; height: auto; position:; z-index: 20000; text-align: center;margin:0 auto;margin-top:30px;" id='cuentasSinc'>
+		<div class='row' id='popupLogin2' style="padding-top:6%; box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75); background-color: #ffffff; color: #000000; margin-left: auto; margin-right: auto;overflow:auto;height:130px;border:10px solid #2EC1CC;">
+			<div class='col-md-5'>
+				<button type="button" class="btn btn-primary" onclick='nuevaCuenta()'>Crear Nueva Cuenta NubePOS</button>
+			</div>
+			<div class='col-md-2'></div>
+			<div class='col-md-5'>
+				<button type="button" class="btn btn-primary" onclick='usarLogin()'>Usar Cuenta Existente NubePOS</button>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="popupLoginNuevo" style="display:none;width:50%;padding:20px;margin-top: 10px; box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75); background-color: #ffffff; color: #000000; margin-left: auto; margin-right: auto;overflow:auto;height:350px;">
+		<div class="encabezadorojo" style='position:relative;height:30px;font-size:20px;padding-left:10px;'>LOGIN PRACTISIS<img src='images/xcierre.png' style='position:absolute; top:3px; right:5px; cursor:pointer;' onclick='cerrarLogin2()'/></div>
+		<div style='background-color:#E0DEDE; padding-top:20px; padding-bottom:20px;' id='contieneEmpresasNuevo'>
+			<div class="row" style="padding-top: 10px;padding-bottom: 10px;">
+				<div class="col-md-12"  style="text-align: center;">
+						<div class="panel panel-default">
+								<div  class="panel-heading">
+									<strong><span class="glyphicon glyphicon-th"></span>
+									 Autentificación de Usuario
+								</div>        
+								<div class="panel-body">
+									<div class="input-group">
+										<label class="input-group-addon">User:</label>
+										<input type="text" id="user2" class="form-control" />
+									</div>
+									<div style="height:10px;"></div>
+									<div class="input-group">
+										<label class="input-group-addon">Pass:</label>
+										<input type="password" id="pass2" class="form-control" />
+									</div>
+									<div style="height:10px;"></div>
+									<button class="btn btn-default" id='btnvalida2' type="button" onclick="valida2();">Login</button>
+								</div>
+						</div>
+								<div id="mensaje2"></div>
+					</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="contenedorNuevaCuenta" style='display:none;margin-top:50px;'>
+		<img src='images/xcierre.png' style='position:absolute; top:3px; right:5px; cursor:pointer;' onclick='cerrarLogin3()'/>
+		<iframe src='http://practisis.net/registro/registrate.php' width='100%' height='800px' frameborder='no' ></iframe>
+	</div>
+	<div id='recibeAlertasActualizaciones'></div>
+	<div id="mainDivSinc" style="margin: 0px; padding: 0px; width:100%; height: 800px; background-color: #ffffff; font-size:14px; color:#404041;display:none;">
+		<table style="width:100%;" border="0" cellpadding='10px' class='table table-striped' style='display:none;'>
+			<tr>
+				<td >
+					<h3>Lista de Productos</h3>
+				</td>
+				<td>
+					<div>
+						<i class="fa fa-cloud-upload fa-5x" onclick='subeDatos()' id='sube1'></i>
+							
+						<i class="fa fa-cloud-upload fa-5x" id='sube2' style='display:;' onclick='subeFacturas()'></i>
+					</div>
+				</td>
+				<td>
+					<div style='display:none;'>
+						<i class="fa fa-download fa-5x" onclick='subeClientes()' id='sube1'></i>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align: right; vertical-align:middle; width: 450px;">
+					<!--<select id="categoryType" class='selectpicker'>
+						<option value="0">Todas las categorías</option>
+					</select>-->
+					<!-- Single button -->
+					<select id='listacategorias' style='font-size:15px;'>
+						<option value='0'>Todas las categorias</option>
+					</select>
+				</td>
+				<td style="text-align: left; vertical-align:middle; width: 550px;">
+					<table style="margin-left: 0px; margin-right: auto;" border="0" cellpadding="4px" cellspacing="10px">
+						<tr>
+							<td style='vertical-align:middle;'>
+								<input placeholder='busqueda' type="text" class='form-control' id="searchKeyword" name="category"/>
+							</td>
+							<td  style='vertical-align:middle;'>
+								<button type='button' class="btn btn-primary" onclick="page=0; getSearch(); return false;">Buscar</button>
+								<!--<input type="image" style="padding: 0px; margin: 0px;" onclick="getSearch(); return false;" alt="Search" src="gfx/search.png"/>-->
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<div id="detailDiv2" style="height:650px; padding-top:20px; margin:0px; font-size:15px;display:none;"></div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3" style='text-align:center;'>
+					<ul class="pagination paginacion-lg" id='paginacion' style='display:none;'>
+					</ul>
+					<input id='totalpags' style='display:none;'/>
+				</td>
+			</tr>
+		</table>	
+	</div>
+	<script type="text/javascript">
+		
+		verificarEmpresas();
+		function verificarEmpresas(){
+			var db = window.openDatabase("Database", "1.0", "PractisisMobile", 200000);
+			db.transaction(function(tx){
+				tx.executeSql('SELECT COUNT(id) as cuantos FROM empresa',[],function(tx,res){
+					var existen=res.rows.item(0).cuantos;
+					console.log(existen);
+					if(existen>0){
+						$('#mainDivSinc').fadeIn('slow');
+						$('#cuentasSinc').css('display','none');
+						
+					}
+				});
+			
+			},errorCB,successCB);
+		}
+		
+		var page=0;
+		ListarCategorias();
+		getSearch();
+
+		function ListarProductos(){
+			var db = window.openDatabase("Database", "1.0", "PractisisMobile", 200000);
+			db.transaction(function(tx){
+			tx.executeSql('SELECT p.*,c.categoria as nombrec FROM PRODUCTOS p,CATEGORIAS c WHERE p.categoriaid=c.id ORDER BY p.formulado ASC LIMIT 0,15;',[],function(tx,results){
+				//console.log(results.rows.length);
+				var inhtml='';
+				for (var i=0; i < results.rows.length; i++){
+					   var row = results.rows.item(i);
+					   var checkiva='';
+					   var checkprfinal='';
+					   var checkmatprima='';
+					   if(row.cargaiva==1)
+							checkiva='checked';
+					   if(row.productofinal==1)
+							checkprfinal='checked';
+					   if(row.materiaprima==1)
+							checkmatprima='checked';
+						var catname='';
+					   inhtml+='<tr><td>'+row.formulado+'</td><td>'+row.codigo+'</td><td>'+row.nombrec+'</td><td style="text-align:right">'+parseFloat(row.precio).toFixed(2)+'</td><td style="text-align:center"><input disabled type="checkbox" '+checkiva+'/></td><td><span class="fa fa-edit"></span></td></tr>';
+					   /*<td style="text-align:center"><input disabled type="checkbox" '+checkprfinal+'/></td><td style="text-align:center"><input disabled type="checkbox" '+checkmatprima+'/></td><td><span class="fa fa-edit"></span></td></tr>';*/
+				}
+				LlenarTablaProd(inhtml);
+				});
+			},errorCB,successCB);
+		}
+
+		function LlenarTablaProd(datos){
+			$('#detailDiv2').html("<table align='center' class='table'><tr><th>Nombre</th><th>Código</th><th>Categoría</th><th style='text-align:right;'>Precio</th><th style='text-align:center'>Aplica IVA</th><th><span class='fa fa-cog'></span></th>"+datos+"</table>");
+		}
+
+		function ListarCategorias(){
+			var db = window.openDatabase("Database", "1.0", "PractisisMobile", 200000);
+			db.transaction(function(tx){
+			tx.executeSql('SELECT * FROM CATEGORIAS ORDER BY id asc;',[],function(tx,results){
+				//console.log(results.rows.length);
+				var inhtml='';
+				for (var i=0; i < results.rows.length; i++){
+					var row=results.rows.item(i);
+					inhtml+='<option value="'+row.id+'">'+row.categoria+'</option>';
+				}
+				LlenarComboCat(inhtml);
+			});
+			},errorCB,successCB);
+		}
+
+		function LlenarComboCat(options){
+			$('#listacategorias').append(options);
+		}
+		function getSearch(){
+			var filtro=$('#searchKeyword').val();
+			var categoria=$('#listacategorias').val();
+			var desde=15*page;
+			var queryextra=' p.id is not NULL';
+			if(filtro!='')
+				queryextra+=' and (p.formulado like "%'+filtro+'%" or p.codigo like "%'+filtro+'%")';
+			if(categoria!=0)
+				queryextra+=' and p.categoriaid='+categoria;
+
+			var db = window.openDatabase("Database", "1.0", "PractisisMobile", 200000);
+			db.transaction(function(tx){
+				tx.executeSql('SELECT p.*,c.categoria as nombrec FROM PRODUCTOS p,CATEGORIAS c WHERE '+queryextra+' and p.categoriaid=c.id ORDER BY p.formulado asc',[],function(tx,result){
+					$('#paginacion').html('');
+					var npags=Math.ceil(result.rows.length/15);
+					$('#totalpags').val(npags);
+					$('#paginacion').append("<li onclick='CambiarPagina(-1);'><span class='enabled' id='atras'>&laquo;</span></li>");
+					for(var j=0;j<npags;j++){
+						var act='';
+						if(page==j)
+							act='active';
+						$('#paginacion').append("<li class='"+act+"' onclick='CambiarPagina("+parseInt(j)+");'><span class='enabled'>"+parseInt(j+1)+"</span></li>");
+					}
+					$('#paginacion').append("<li onclick='CambiarPagina(-2);'><span class='enabled' id='adelante'>&raquo;</span></li>");
+				});
+			},errorCB,successCB);
+			
+			
+			db.transaction(function(tx){
+			tx.executeSql('SELECT p.*,c.categoria as nombrec FROM PRODUCTOS p,CATEGORIAS c WHERE '+queryextra+' and p.categoriaid=c.id ORDER BY p.formulado desc LIMIT '+desde+',15;',[],function(tx,results){
+				//console.log(results);
+				var inhtml='';
+				for (var i=0; i < results.rows.length; i++){
+					var row = results.rows.item(i);
+					var checkiva='';
+					var checkprfinal='';
+					var checkmatprima='';
+					if(row.cargaiva==1)
+							checkiva='checked';
+					if(row.productofinal==1)
+							checkprfinal='checked';
+					if(row.materiaprima==1)
+							checkmatprima='checked';
+					var catname='';
+					inhtml+='<tr><td>'+row.formulado+'</td><td>'+row.codigo+'</td><td>'+row.nombrec+'</td><td style="text-align:right">'+parseFloat(row.precio).toFixed(2)+'</td><td style="text-align:center"><input disabled type="checkbox" '+checkiva+'/></td><td><span class="fa fa-edit" style="cursor:pointer;" onclick="EditarProducto('+row.id_local+');"></span></td></tr>';
+					/*<td style="text-align:center"><input disabled type="checkbox" '+checkprfinal+'/></td><td style="text-align:center"><input disabled type="checkbox" '+checkmatprima+'/></td><td><span class="fa fa-edit" style="cursor:pointer;" onclick="EditarProducto('+row.id+');"></span></td></tr>';*/
+				}
+				LlenarTablaProd(inhtml);
+			});
+			},errorCB,successCB);
+		}
+
+		function CambiarPagina(arg){
+			//console.log($('#totalpags').val());
+			if(arg==-1){
+				if((page-1)>=0){
+					page--;
+					getSearch();
+				}
+			}else if(arg==-2){
+				//console.log($('#totalpags').val());
+				if((page+1)<parseInt($('#totalpags').val())){
+					page++;
+					getSearch();
+				}
+			}else{
+				page=arg;
+				getSearch();
+			}
+			
+		}
+
+		function EditarProducto(idpr){
+			$('#content').load("views/productos/nuevoproducto.html",function(){
+				VerDatosProducto(idpr);
+			});
+		}
+
+		$(document).keyup(function(event){
+			if(event.keyCode === 13){
+				getSearch();
+				}
+		});
+
+			
+			function subeFacturas(){
+				var db2 = window.openDatabase("Database", "1.0", "PractisisMobile", 200000);
+				var empresa = localStorage.getItem('empresa');
+				var miqueryFac='SELECT * from FACTURAS where aux = ? order by id ASC';
+				db2.transaction(function(tx){
+				tx.executeSql(miqueryFac,[0],function(tx,resultsfact){
+					//alert(results);
+					//var existenD=resultsfact.rows.item(0).cuantos;
+					//if(existenD>0){
+						var inhtml='';
+						for (var i=0; i < resultsfact.rows.length; i++){
+								var rowfact = resultsfact.rows.item(i);
+								var id = rowfact.id;
+								enviaFacturas(id);
+							}
+					//}
+				});
+				},errorCB,successCB);
+			}
+			function enviaFacturas(id){
+				console.log(id);
+				var db2 = window.openDatabase("Database", "1.0", "PractisisMobile", 200000);
+				var empresa = localStorage.getItem('empresa');
+				var miqueryFac='SELECT * from FACTURAS where aux = ? and id = ? order by id ASC';
+				db2.transaction(function(tx){
+				tx.executeSql(miqueryFac,[0 , id ],function(tx,resultsfact){
+					//alert(results);
+					var inhtml='';
+					for (var i=0; i < resultsfact.rows.length; i++){
+							var rowfact = resultsfact.rows.item(i);
+							var id = rowfact.id;
+							var clientName = rowfact.clientName;
+							var ruc = rowfact.RUC;
+							var address = rowfact.address;
+							var tele = rowfact.tele;
+							var fetchJson = rowfact.fetchJson; 
+							var paymentsUsed = rowfact.paymentsUsed;
+							var cash = rowfact.cash;
+							var cards = rowfact.cards;
+							var cheques = rowfact.cheques;
+							var valueCxC = rowfact.valueCxC;
+							var paymentConsumoInterno = rowfact.paymentConsumoInterno;
+							var fecha = rowfact.fecha;
+							//alert(fetchJson);
+							$.post('http://practisis.net/sandbox/practipos2/ajax/apiSincronizador/apiSincronizaNubepos.php',{
+								fetchJson : fetchJson , empresa : empresa , id : id , fecha : fecha
+							}).done(function(data){
+								console.log(data);
+								var datos = data.split("@");
+								var id = datos[0];
+								console.log(id);
+								var idreal = datos[1];
+								console.log(idreal);
+								var db2 = window.openDatabase("Database", "1.0", "PractisisMobile", 200000);
+								db2.transaction(function(tx){
+								tx.executeSql('update FACTURAS set aux = ? where id = ?',[idreal , id],function(tx,results){
+									console.log(results);
+								});
+								},errorCB,successCB);
+								
+							});
+						}
+						
+						//console.log(fetchJson);
+						
+						
+					
+				});
+				},errorCB,successCB);
+			}
+			function subeDatos(){
+				var db2 = window.openDatabase("Database", "1.0", "PractisisMobile", 200000);
+				var miqueryFac='SELECT p.*,c.categoria as nombrec , c.id as idcat FROM PRODUCTOS p,CATEGORIAS c WHERE p.categoriaid=c.id ORDER BY p.formulado ASC';
+				//alert(miqueryFac);
+				var empresa = localStorage.getItem('empresa');
+				console.log(empresa)
+				db2.transaction(function(tx){
+				tx.executeSql(miqueryFac,[],function(tx,results){
+					//alert(results);
+					var inhtml='';
+					for (var i=0; i < results.rows.length; i++){
+						var row = results.rows.item(i);
+						var formulado = row.formulado;
+						var codigo = row.codigo;
+						var precio = row.precio;
+						var categoriaid = row.idcat;
+						var categorianombre = row.nombrec;
+						var cargaiva = row.cargaiva;
+						var productofinal = row.productofinal;
+						var materiaprima = row.materiaprima;
+						//alert(formulado +'@'+ categoriaid +'@'+ empresa);
+						$.post('http://practisis.net/practipos2/ajax/apiSincronizador/apiSincronizaNubeposProductos.php',{
+							empresa : empresa , formulado : formulado , codigo : codigo , precio : precio , categorianombre : categorianombre , cargaiva : cargaiva , productofinal : productofinal , materiaprima : materiaprima
+						}).done(function(data){
+							alert(data);
+						});
+						
+					}
+					
+				});
+				},errorCB,successCB);
+				
+				setTimeout(function() {
+				//alert('bajara');
+					subeClientes();
+					enviaConsultaApi2(empresa); 
+				}, 5000);
+				
+				
+			}
+			
+			
+			
+			function subeClientes(){
+				var db2 = window.openDatabase("Database", "1.0", "PractisisMobile", 200000);
+				var miqueryFac='select * from CLIENTES order by id ASC';
+				//alert(miqueryFac);
+				var empresa = localStorage.getItem('empresa');
+				//console.log(empresa)
+				db2.transaction(function(tx){
+				tx.executeSql(miqueryFac,[],function(tx,results){
+					//alert(results);
+					var inhtml='';
+					for (var i=0; i < results.rows.length; i++){
+						var row = results.rows.item(i);
+						var id = row.id;
+						var nombre = row.nombre;
+						var cedula = row.cedula;
+						var email = row.email;
+						var direccion = row.direccion;
+						var telefono = row.telefono;
+						//alert(formulado +'@'+ categoriaid +'@'+ empresa);
+						$.post('http://practisis.net/practipos2/ajax/apiSincronizador/apiSincronizaNubeposClientes.php',{
+							id : id , nombre : nombre , cedula : cedula , email : email , direccion : direccion , telefono : telefono , empresa : empresa
+						}).done(function(data){
+							alert(data);
+						});
+						
+					}
+					
+				});
+				},errorCB,successCB);
+			}
+			
+			
+			
+			function enviaConsultaApi2(id){
+				var id_emp = id
+				$.post('https://www.practisis.net/nubeposboot/www/ajax/dataservice.php',{
+					id_emp : id_emp 
+				}).done(function(response){
+					console.log(response);
+					var arraydatos=JSON.parse(response); 
+					//alert(response);
+					$('#empresaName').html(arraydatos.empresa.nombre);
+					$('#nemp').html("Emp. "+arraydatos.empresa.num);
+					$('#jsonProductos').html(arraydatos.productos);
+					$('#jsonCategorias').html(arraydatos.categorias);
+					$('#jsonformaspago').html(arraydatos.formaspago);
+					$('#jsonmisclientes').html(arraydatos.clientes);
+					$('#jsoncaja').html(arraydatos.cajas);
+					$('#loginPractisis').fadeOut('fast');
+					Ingresaproductos2();
+					IngresaCategorias2();
+					IngresaClientes2();
+					//console.log(arraydatos);
+				});
+			}
+			
+			function Ingresaproductos2(){
+				 var json = $('#jsonProductos').html();
+					var mijson = eval(''+json+'');
+					for(var j in mijson){
+						for(var k in mijson[j]){
+							for(i = 0; i < mijson[j][k].length; i++){
+									var item = mijson[j][k][i];
+									InsertaProducto2(item);
+							}
+						}
+					}
+			}
+			
+			function InsertaProducto2(itempr){
+				var db = window.openDatabase("Database", "1.0", "PractisisMobile", 200000);
+				var cargaiva=0;
+				var imp=itempr.formulado_tax_id.split('|');
+				
+				if(imp.indexOf("1")>=0)
+					cargaiva=1;
+				var nombreFormulado = itempr.formulado_nombre;
+				//console.log(nombreFormulado);
+				
+				var miqueryProd="SELECT * FROM PRODUCTOS  where lower(formulado) =  lower('"+nombreFormulado+"') ORDER BY id asc";
+				//console.log(miqueryProd);
+				db.transaction(function(tx){
+				tx.executeSql(miqueryProd,[],function(tx,results){
+					console.log(results.rows.length +'@'+ nombreFormulado);
+					if(results.rows.length > 0 ){
+						alert('no ingresara este producto:     ' + nombreFormulado);
+					}else{
+						db.transaction(
+						function (tx){
+								tx.executeSql('INSERT INTO PRODUCTOS (id,formulado,codigo,precio,categoriaid,cargaiva,productofinal,materiaprima) VALUES (?,?,?,?,?,?,?,?);',[itempr.formulado_id,itempr.formulado_nombre,itempr.formulado_codigo,itempr.formulado_precio,itempr.formulado_tipo,cargaiva,1,itempr.formulado_matprima],
+								function(tx,res){
+									console.log("producto insertado:"+res.insertId)
+								});				
+						},errorCB,successCB);
+					}
+					
+				});
+				},errorCB,successCB);
+				
+					
+			}
+			
+			function IngresaCategorias2(){
+				var json = $('#jsonCategorias').html();
+					var mijson = JSON.parse(json);
+					alert(mijson);
+					for(var j in mijson){
+						for(var k in mijson[j]){
+								var item=mijson[j][k];
+								metedatoscat2(item);
+						}
+					}
+			}
+				
+			function metedatoscat2(itemc){
+				//console.log(itemc);
+				var db = window.openDatabase("Database", "1.0", "PractisisMobile", 200000);
+				db.transaction(
+				function (tx){
+					tx.executeSql('INSERT INTO CATEGORIAS(id,categoria,activo,existe)VALUES(?,?,?,?);',[itemc.categoria_id,itemc.categoria_nombre,1,1],
+					function(tx,res){
+						console.log(res);
+						console.log("vamos:"+res.insertId+"categorias");
+					});				
+				},errorCB,successCB);
+			}
+				
+			function IngresaClientes2(){
+				var json = $('#jsonmisclientes').html();
+					var mijson = JSON.parse(json);
+					//console.log(mijson);
+					for(var j in mijson){
+						for(var k in mijson[j]){
+								var item=mijson[j][k];
+								metedatoscliente2(item);
+						}
+					}
+			}
+				
+			function metedatoscliente2(itemc){
+				//console.log(itemc);
+				var db = window.openDatabase("Database", "1.0", "PractisisMobile", 200000);
+				db.transaction(
+				function (tx){
+							tx.executeSql('INSERT INTO CLIENTES(id,nombre,cedula,telefono,direccion,email,existe)VALUES(?,?,?,?,?,?,?);',[itemc.id,itemc.nombre,itemc.cedula,itemc.telefono,itemc.direccion,itemc.email,1],
+							function(tx,res){
+								//console.log(res);
+								console.log("vamos:"+res.insertId+"clientes");
+							});				
+				},errorCB,successCB);
+			}
+				
+	</script>
