@@ -12,7 +12,7 @@
 //fin barcodeScanner
 	
     function iniciaDB(tx){
-		console.log("Ana");		
+		//console.log("Ana");		
 		var db = window.openDatabase("Database", "1.0", "PractisisMobile", 200000);
 		//tx.executeSql('DROP TABLE IF EXISTS PRODUCTOS');
         tx.executeSql('CREATE TABLE IF NOT EXISTS PRODUCTOS (id_local integer primary key AUTOINCREMENT,id integer, formulado text, codigo text, precio integer, categoriaid integer,cargaiva integer,productofinal integer,materiaprima integer)');
@@ -199,17 +199,6 @@
 		
 		var buscar = $('#inputbusc').val();
 		//alert(buscar);
-		var db = window.openDatabase("Database", "1.0", "PractisisMobile", 200000);
-		db.transaction(function(tx){
-			tx.executeSql("SELECT * FROM PRODUCTOS WHERE formulado like '%"+buscar+"%'",[],function(tx,results){
-				console.log(results);
-				if(results.rows.length>0){
-					var row = results.rows.item(0);
-					var id = row.id;
-					var formulado = row.formulado;
-				}
-			},errorCB,successCB);
-		});
 		
 		if(e.keyCode==13){
 			var misugerencias=document.getElementsByClassName('sugerencia');
@@ -247,29 +236,35 @@
 				$('#tableresults').html('');
 				// var json = $('#jsonProductos').html();
 				// var mijson = eval(''+json+'');
-				for(var j in results){
-					for(var k in results[j]){
-						for(i = 0; i < results[j][k].length; i++){
-								var item = results[j][k][i];
+				var db = window.openDatabase("Database", "1.0", "PractisisMobile", 200000);
+				db.transaction(function(tx){
+					tx.executeSql("SELECT * FROM PRODUCTOS WHERE formulado like '%"+buscar+"%'",[],function(tx,results){
+						console.log(results);
+						if(results.rows.length>0){
+							for(var j=0;j< results.rows.length;j++){
+								var item = results.rows.item(j);
+								console.log(item);
 								var suger='';
 								if(item.formulado.toLowerCase().indexOf(filtro.toLowerCase())>-1)
 									suger=item.formulado;
 								else if(item.codigo.toLowerCase().indexOf(filtro.toLowerCase())>-1)
 									suger=item.codigo;
-								
 								if(suger!='')
 								{
 									if(document.getElementById('tableresults').rows.length<4){
-										$('#tableresults').append("<tr><td class='sugerencia' onmouseover='AclararSugerencia(this,true);' onmouseout='AclararSugerencia(this,false);' enfocada='0'><div id='busc_"+ item.id +"' data-precio='"+ item.precio +"' data-impuestos='"+ item.formulado_impuestos +"' data-impuestosindexes='"+ item.formulado_tax_id +"' data-formulado='"+ item.nombre.toUpperCase()+"' onclick='PlaySound(2); agregarCompra(this,2); return false;'>"+suger.toUpperCase()+"</div></td></tr>");
+										$('#tableresults').append("<tr><td class='sugerencia' onmouseover='AclararSugerencia(this,true);' onmouseout='AclararSugerencia(this,false);' enfocada='0'><div id='busc_"+ item.id +"' data-precio='"+ item.precio +"' data-impuestos='"+ item.formulado_impuestos +"' data-impuestosindexes='"+ item.formulado_tax_id +"' data-formulado='"+ item.formulado.toLowerCase()+"' onclick='PlaySound(2); agregarCompra(this,2); return false;'>"+suger.toLowerCase()+"</div></td></tr>");
 									}
 									
 								}
+						
+							}
 						}
-					}
-				}
-				if(mijson.length>0){
+					},errorCB,successCB);
+				});
+				//console.log(results);
+				/*if(mijson.length>0){
 					AclararSugerencia(document.getElementById('tableresults').rows[0].cells[0],true);
-				}
+				}*/
 			}
 		}
 	}

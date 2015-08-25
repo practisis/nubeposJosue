@@ -10,7 +10,7 @@
 <script type="text/javascript" src="scripts/payment.js"></script>
 <!--link para llamar a la funcion scannerBarcode-->
 <!--link-->
-<div class="page page-default" style='position:relative;'>
+<div class="page page-default" style='background-color:white;'>
 <div class="row">
 <div class="col-sm-12">
     <audio id="beep1" src="views/nubepos/sonidos/blip8.mp3" preload="auto"></audio>
@@ -20,107 +20,75 @@
 	<audio id="beep5" src="views/nubepos/sonidos/button-16.wav" preload="auto"></audio>
 	<audio id="beep6" src="views/nubepos/sonidos/button-19.wav" preload="auto"></audio>
 	<div style='display:none;' id='jsonclientes'></div>
-	<div class='central' id='central'>
-	<div style="position:relative; display:block; width:100%; height:100%; background-color:rgba(255,255,255,0.7); z-index:50; text-align:center; display:none;" id="contentCaja2">
-			<div class='header' style='width:60%;  margin-left:auto; margin-right:auto; min-height:50px;'>Apertura de Caja</div>
-			<div style="position:relative; left:0px; top:0px; text-align:center;" id="loadCaja">
-			<div id="contentCampos" align="center" style='background-color:#FFF; color:#777; padding:20px; width:60%; margin-left:auto; margin-right:auto; border:1px solid #777;'>
-				<table cellpadding="0" cellspacing="5px" width="100%" align='center'>
+	<section id="content2">
+	<div  id='central' class='col-lg-12'>
+	<div class="modal fade" id="contentCaja2" data-backdrop='static'>
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header"><h2>Apertura de Caja</h2></div>
+			<div class='modal-body' id="loadCaja">
+			<div id="contentCampos" align="center">
+				<table class='table'>
 					<tr>
-						<td  align="left">
+						<td align="left" valign='middle'> 
 							<label class="textosApertura" type="1"> Número de establecimiento </label>
 						</td>
 						<td  align="left">
-							<table>
+							<table width='100%'>
 								<tr>
 								<td>
-								<table>
-								<tr>
-									<td>
-										<label class="textosApertura" type="1">(# estab) </label>
-									</td>
-								</tr>
-								<tr>
-									<td>
-									<input id="inpEstablecimiento1" placeHolder="001" value='001' pattern="[0-9]*" />
-									</td>
-								</tr>
-								</table>
+								   <label class="textosApertura" type="1">(# estab) </label>
+								   <input id="inpEstablecimiento1" placeHolder="001" value='001' pattern="[0-9]*" class='form-control'/>
+									
 								</td>
 								<td>
-									<table>
-									<tr>
-										<td>
-										<label class="textosApertura" type="1">(pto venta) </label>
-										</td>					
-									</tr>
-									<tr>
-										<td>
-										<input id="inpEstablecimiento2" placeHolder="000" value='001' pattern="[0-9]*" step='any'/>
-										</td>
-									</tr>
-									</table>													
+									<label class="textosApertura" type="1">(pto venta) </label>	
+									<input id="inpEstablecimiento2" placeHolder="000" value='001' pattern="[0-9]*" class='form-control' step='any'/>
+																							
 								</td>
 								<td>					
-									<table>
-									<tr>
-										<td>
+									
 										<label class="textosApertura" type="1">(# factura) </label>
-										</td>
-									</tr>
-									<tr>
-										<td>
-										<input step='any' id="inpEstablecimiento3" placeHolder="200" value='001' pattern="[0-9]*" />
-										</td>
-									</tr>
-									</table>
+										
+										<input step='any' id="inpEstablecimiento3" placeHolder="200" value='001' pattern="[0-9]*" class='form-control' />
+										
 								</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
-					<tr>
-						<td colspan="2">
-						<div class="espacio"></div>
-						</td>
-					</tr>
+					
 					<tr>
 						<td align="left">
 						<label class="textosApertura" type="2"> Número de autrorización </label>
 						</td>
 						<td  align="left">
-						<input id="inpAutorizacion"  placeHolder="exp. 231" />
+						<input id="inpAutorizacion"  placeHolder="exp. 231"  class='form-control'/>
 						</td>
 					</tr>
-					<tr>
-						<td colspan="2">
-						<div class="espacio"></div>
-						</td>
-					</tr>
+					
 					<tr>
 						<td  align="left">
 						<label class="textosApertura" type="3"> Valor de apertura </label>
 						</td>
 						<td  align="left">
-						<input id="inpValor" placeHolder="exp. 231" />
+						<input id="inpValor" placeHolder="0" type='number' class='form-control' value='0' />
 						</td>
 					</tr>
-					<tr>
-						<td colspan="2">
-						<div class="espacio"></div>
-						</td>
-					</tr>
+					
 					<tr>
 						<td colspan="2" align="center">
-						<div id="btnSaveInclude" class='actionredbutton' style='width:90px; min-width:90px; height:30px; min-height:30px; padding-top:5px; margin-top:10px;' onclick='AbrirCaja();'>
+						<button id="btnSaveInclude" class='btn btn-danger btn-lg' onclick='AbrirCaja();'>
 							Abrir Caja
-						</div>
+						</button>
 						</td>
 					</tr>
 				</table>
 				</div>
 			</div>
-	</div>
+		</div>
+		</div>
+   </div>
 	<!--<div class='scan' id='scan' onclick='dale()'>
 		<div id='divInScan' style='margin:10px; width:100%; height:100%;'>
 		<div class='boton' id='btn_scan'><img src='images/simboloscan.png' style='height:30px; margin-right:5px;'/>SCAN</div>
@@ -132,123 +100,112 @@
 			<div class='boton' id='barcodescanner'><img src='images/simboloscan.png' style='height:30px; margin-right:5px;'/>SCAN</div>
 		</div>
 	</div>-->
-	<div style="position:relative; z-index:2000;">
+<div class='row' id='row1'>
+	<div class='scan col-lg-2' id='scan'>
 		<div class="app">
 			<div id="deviceready" class="blink" style="display:none;">
 				<p class="event listening">Connecting to Device</p>
 				<p class="event received">Device is Ready</p>
 			</div>
-			 <p style="margin-top:15px; margin-left:10px;"><a class="botonr" style="font-size:22px; padding:5px 15px; text-decoration:none;" href="#" class="topcoat-button" id="scan">SCAN</a></p>
+			 <div class='btn-lg btn-success' style='margin-top:10px;' type='button' id='btn_scan'>SCAN&nbsp;<span class='fa fa-barcode'></span></div>
 		</div>
 	</div>
 	<!--<iframe src="scan/index.html" style="position:relative; z-index:500; width:100px; height:30px; overflow:hidden; margin-left:10px; margin-top:30px;" frameborder="0"></iframe>-->
-	<div class='buscador' id='buscador' style="margin-left:10%;">
-		<div id='divInBuscador' style='margin:17px 70px; position:relative; z-index:2001; width:100%; height:100%;'>
-			<input type='text' id='inputbusc' name='inputbusc' placeholder='Buscar' onkeyup='BuscarSugerencias2(this.value,event);'/>
-		</div>
+	<div class='buscador col-lg-10' id='buscador' style='margin-top:10px;' >
+	<div class="input-group">
+    <span class="input-group-addon"><span class='glyphicon glyphicon-search'></span></span>
+	<input type='text' id='inputbusc' name='inputbusc' placeholder='Buscar' onkeyup='BuscarSugerencias2(this.value,event);' class='form-control input-lg'/>
+	</div>
+	<div id="resultBuscador" class='resultBuscador'>
+		<table id='tableresults' width='100%' cellspacing='0px' cellpadding='0px'>
+		</table>
+	</div>
 	<!---<img src='images/atras.png' style='cursor:pointer; position:absolute; top:0px; right:0px; z-index:100; display:block;' onclick='window.history.back();' id='backmenu'/>-->
 	</div>
-	<div class='numpad' id='numpad'>
-		<div style='margin:10px; width:100%; height:100%;' id='divInNumPad'>
-			<div class='fondocalculadora' align='center'>
-				<div class='cantidad'></div>
+</div>
+<div class='row' id='row2'>
+	<div class='numpad col-lg-2' id='numpad'>
+		<div id='divInNumPad' class='panel panel-default' style='margin-top:10px; background-color:#EEE;'>
+			<div class='panel-body' style='padding:10px; text-align:center;'>
+				    <div class='cantidad btn btn-default btn-lg'>0</div>
 					<div class='contnumero' align='center'>
-									<img src='images/fondonum.png' class='fondonum' id='f_1'/>
-									<img src='images/fondonumhover.png' class='fondonum' id='fh_1' style='display:none;'/>
-									<div class='numero' cual='1'>1</div>
+						<button class='numero btn btn-default btn-lg' cual='1'>1</button>
 					</div>
 					<div class='contnumero' align='center'>
-									<img src='images/fondonum.png' class='fondonum' id='f_2'/>
-									<img src='images/fondonumhover.png' class='fondonum' id='fh_2' style='display:none;'/>
-									<div class='numero' cual='2'>2</div>
+						<div class='numero  btn btn-default btn-lg' cual='2'>2</div>
 					</div>
 					<div class='contnumero' align='center'>
-									<img src='images/fondonum.png' class='fondonum' id='f_3'/>
-									<img src='images/fondonumhover.png' class='fondonum' id='fh_3' style='display:none;'/>
-									<div class='numero' cual='3'>3</div>
+						<div class='numero  btn btn-default btn-lg' cual='3'>3</div>
 					</div>
-							<div class='contnumero' align='center'>
-								<img src='images/fondonum.png' class='fondonum' id='f_4'/>
-								<img src='images/fondonumhover.png' class='fondonum' id='fh_4' style='display:none;'/>
-								<div class='numero' cual='4'>4</div>
-							</div>
-							<div class='contnumero' align='center'>
-								<img src='images/fondonum.png' class='fondonum' id='f_5'/>
-								<img src='images/fondonumhover.png' class='fondonum' id='fh_5' style='display:none;'/>
-								<div class='numero' cual='5'>5</div>
-							</div>
-							<div class='contnumero' align='center'>
-								<img src='images/fondonum.png' class='fondonum' id='f_6'/>
-								<img src='images/fondonumhover.png' class='fondonum' id='fh_6' style='display:none;'/>
-								<div class='numero' cual='6'>6</div>
-							</div>
-							<div class='contnumero' align='center'>
-								<img src='images/fondonum.png' class='fondonum' id='f_7'/>
-								<img src='images/fondonumhover.png' class='fondonum' id='fh_7' style='display:none;'/>
-								<div class='numero' cual='7'>7</div>
-							</div>
-							<div class='contnumero' align='center'>
-								<img src='images/fondonum.png' class='fondonum' id='f_8'/>
-								<img src='images/fondonumhover.png' class='fondonum' id='fh_8' style='display:none;'/>
-								<div class='numero' cual='8'>8</div>
-							</div>
-							<div class='contnumero' align='center'>
-								<img src='images/fondonum.png' class='fondonum' id='f_9'/>
-								<img src='images/fondonumhover.png' class='fondonum' id='fh_9' style='display:none;'/>
-								<div class='numero' cual='9'>9</div>
-							</div>
-							<div class='contnumero' align='center'>
-								<img src='images/fondonum.png' class='fondonum' id='f_0'/>
-								<img src='images/fondonumhover.png' class='fondonum' id='fh_0' style='display:none;'/>
-								<div class='numero' cual='0'>0</div>
-							</div>
-							<div class='contnumero' align='center'>
-								<img src='images/fondonum.png' class='fondonum' id='f_p'/>
-								<img src='images/fondonumhover.png' class='fondonum' id='fh_p' style='display:none;'/>
-								<div class='numero' cual='p'>.</div>
-							</div>
-							<div class='contnumero' align='center'>
-								<img src='images/borrar.png' class='fondonum' id='f_d'/>
-								<img src='images/borrarhover.png' class='fondonum' id='fh_d' style='display:none;'/>
-								<div class='numero' cual='d'>
-								</div>
-							</div>
+					<div class='contnumero' align='center'>
+						<div class='numero  btn btn-default btn-lg' cual='4'>4</div>
+					</div>
+					<div class='contnumero' align='center'>
+						<div class='numero  btn btn-default btn-lg' cual='5'>5</div>
+					</div>
+					<div class='contnumero' align='center'>
+						<div class='numero  btn btn-default btn-lg' cual='6'>6</div>
+					</div>
+					<div class='contnumero' align='center'>
+						<div class='numero  btn btn-default btn-lg' cual='7'>7</div>
+				    </div>
+					<div class='contnumero' align='center'>
+						<div class='numero  btn btn-default btn-lg' cual='8'>8</div>
+					</div>
+					<div class='contnumero' align='center'>
+						<div class='numero  btn btn-default btn-lg' cual='9'>9</div>
+					</div>
+					<div class='contnumero' align='center'>
+						<div class='numero  btn btn-default btn-lg' cual='0'>0</div>
+					</div>
+					<div class='contnumero' align='center'>
+						<div class='numero  btn btn-default btn-lg' cual='p'>.</div>
+					</div>
+					<div class='contnumero' align='center'>
+						<div class='numero  btn btn-default btn-lg' cual='d'><span class='glyphicon glyphicon-remove'></span></div>
+					</div>
 			</div>
 		</div>
 	</div>
-	<div class='detalle' id='detalle'>
+	<div class='detalle col-lg-10' id='detalle'>
 		<div class='divDetalle'>
 			<table width='100%' cellpadding='0px' cellspacing='0px'>
 				<tr>
-					<td>
-						<table cellpadding='0px' cellspacing='0px' width='94%' align='left' id='headerdetalle'>
+					<td style='vertical-align:top;'>
+						<table class='table'  style='padding-bottom:0px; margin-bottom:0px; border-bottom:1px solid #404041; color:#404041; background-color:#EEE;' id='headerdetalle'>
 							<tr>
-								<td style="width:5%; border-top-left-radius:15px;" class='encabezadorojo'></td>
-								<td style="width:20%; border-right:1px solid #909192;" class='encabezadorojo'>Cant.</td>
-								<td class='encabezadorojo' style="width:50%; text-align:left; border-right:1px solid #909192; padding-left:20px;">Producto</td>
-								<td class='encabezadorojo' style="text-align:right; padding-right:20px; border-top-right-radius:15px;">US$ Total</td>
+								<th style="width:5%;"></th>
+								<th style="width:20%;" >Cant.</th>
+								<th style="width:50%; text-align:left; padding-left:20px;">Producto</th>
+								<th style="text-align:right; padding-right:20px;">US$ Total</th>
 							</tr>
 						</table>
 					</td>
 				</tr>
 				<tr>
-					<td class='celdagris' align='center' style='position:relative;'>
+					<td align='center' colspan='3' style='vertical-align:top;'>
 						<div class='contentdetalle' id='contentdetalle'>
-							<table id="tablaCompra" cellpadding='0px' cellspacing='0px' width='100%' align='left'>
+							<table id="tablaCompra" class='table table-bordered' align='left'>
 							</table>
 						</div>
-						<div id='navegadoresv'>
+						<!---<div id='navegadoresv'>
 						<table cellpadding='0px' cellspacing='0px'>
 							<tr><td valign='bottom'><img src='images/navarriba.png' style='height:80px; cursor:pointer;' id='nav_up' onmousedown='DetalleAbajo();'/></td></tr>
 							<tr><td valign='top'><img src='images/navabajo.png' style='height:80px;cursor:pointer;' id='nav_down'  onclick='DetalleArriba();' onmousedown='DetalleArriba();'/></td></tr>
 						</table>
-						</div>
+						</div>--->
 					</td>
 				</tr>
 			</table>
+			
+			<button type='button' class='btn btn-success btn-lg' id='btn_pagar' style='float:right; margin:5px;' onclick="AntesDePagar(); return false;">PAGAR</button>
+			<button type='button' class="btn btn-default btn-lg" style='margin:5px; float:right;' disabled='disabled' id='total'>$ 0.00</button>
+			<button type='button' class='btn btn-default btn-lg' style='margin:5px; float:right;' id='btn_descuento' onclick="showPopup(); return false;">DESCUENTO</button>
+			<button type='button' class='btn btn-default btn-lg' style='margin:5px; float:right;' id='btn_cierre' onclick='$("#modalcierre").modal("show");'>CIERRE</button>
 		</div>
 	</div>
-	<div class='descuento' id='descuento'>
+</div>
+	<!---<div class='descuento' id='descuento'>
 		<div id='divInDesc' style='margin:10px; width:45%; height:100%; float:left;'>
 		<div class='boton' id='btn_descuento' onclick="showPopup(); return false;">DESC.</div>
 		</div>
@@ -264,95 +221,73 @@
 		</div>
 		<div class='botonr' id='btn_pagar' style='width:47%; float:left;' onclick="AntesDePagar(); return false;">PAGAR</div>
 	</div>
-	</div>
-	<div class='productos' id='productos' align='center'>
-		<div style='position:relative; border-radius:15px; background-color:#B9BDBF; width:98%; margin-right:auto; margin-left:auto;'>
+	</div>-->
+<div class='row' id='row3'>
+	<div class='productos col-lg-12' id='productos' align='center'>
+		<div class='panel panel-default' style='background-color:#DDD;'>
+		<div class='panel-body'>
 		<div id="loader" style="display:none; position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: rgba(255,255,255,0.8); text-align: center;">
 				<img alt="" style="height:20%;" src="images/loading.gif"/>
 		</div>
 		<table cellspacing="0px" cellpadding="0px" width='95%' style='margin-top:10px;'>
 			<tr>
-				<td>
-					<table cellpadding='0px' cellspacing='0px'>
-						<tr>
-							<td>
+				<td align='right'>
 								<img onclick="slider('izquierda'); return false;" src='images/izquierdacateg.png' class='direccionales'/>
 							</td>
-							<td>
+							<td style='background-color:#DDD;'>
 								<div id='listaCategorias'>
 									<div id='contenidoCategorias'></div>
 								</div>
 							</td>
-							<td>
+							<td align='left'>
 								<img onclick="slider('derecha'); return false;" src='images/derechacateg.png' class='direccionales'/>
 							</td>
-						</tr>
-					</table>
-				</td>
 			</tr>
 			<tr>
+				<td><div id='nav_izq' data-dir="left" class="directionProducts btn btn-primary" style='margin:5px;'><span class='glyphicon glyphicon-menu-left'></span></div></td>
 				<td class='contentListaProductos' id='contentListaProductos'>
-					<table cellspacing='0px' cellpadding='0px'>
-							<tr>
-							<td style='display:none;'><img src='images/izquierdahover.png' data-dir="left" class="directionProducts" id='pagizq' style='visibility:hidden;' onclick='PlaySound(3);'/></td>
-							<td>
 								<div id='listaProductos'></div>
-							</td>
-							<td style='display:none;'><img src='images/derechahover.png' data-dir="right" class="directionProducts" id='pagder' style='visibility:hidden;' onclick='PlaySound(3);'/></td>
-							</tr>
-					</table>
-					<div id='navegadoresh' class='celdagrish'>
+				</td>
+				<td><div data-dir="right" class="directionProducts btn btn-primary" style='cursor:pointer; margin:5px;' id='nav_der'><span class='glyphicon glyphicon-menu-right'></span></div></td>
+							
+					<div id='navegadoresh'>
 						<table cellspacing='0px' cellpadding='0px' width='99%' align='center'>
 							<tr>
-								<td align='right'><img src='images/navizq.png' style='cursor:pointer; margin-top:5px;' id='nav_izq'data-dir="left" class="directionProducts"/></td>
-								<td align='left'><img src='images/navder.png'  data-dir="right" class="directionProducts" style='cursor:pointer; margin-top:5px;' id='nav_der'/></td>
+								<td align='right'></td>
+								<td align='left'></td>
 								<td></td>
 							</tr>
 						</table>
 					</div>
-				</td>
 			</tr>
 		</table>
 		</div>
 	</div>
-	<div id="resultBuscador" class='resultBuscador'>
-		<table id='tableresults' width='100%' cellspacing='0px' cellpadding='0px'>
-		</table>
-	</div>
-	<div id="popup" style="display: none; background: rgba(255,255,255,0.8); width: 100%; height: 100%; top: 0; left: 0; position: absolute; z-index: 20000; text-align: center;">
-		<br/>
-		<br/>
-		<div id="popupDiscount" style="margin-top: 1000px; box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75); background-color: #ffffff; color: #000000; margin-left: auto; margin-right: auto;">
-			<div class="encabezadorojo" style='position:relative; height:30px; font-size:20px;'>Descuentos<img src='images/xcierre.png' style='position:absolute; top:3px; right:5px; cursor:pointer;' onclick='$("#popup").fadeOut();'/></div>
-			<br/>
+ </div>
+ </div>
+ </div>
+ </section>
+<!--pop up discount --->
+<div  class="modal fade" id="popupDiscount" role="dialog">
+	<div class="modal-dialog modal-lg">
+	<div class='modal-content text-center'>
+		<div class='modal-header'><button type='button' style='color:#404041; margin-right:5px;' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>x</span></button><h2>DESCUENTO</h2></div>
+		<div class="modal-body divdescuento" style='color:#404041; position:relative;'>
 			<div id="discountAdded" style="display: none; text-align: center; color: green">OK!</div>
-			<table cellspacing='0px' cellpadding='0px' align='center' width='90%'>
-				<tr>
-					<td class='labelgris'><div id='labeladdDiscount' style='font-size:16px; height:25px;'>$Total descuento</div></td>
-					<td align='left'><input type="number" min='0' onkeypress='soloNumerost(event);'  id="addDiscount" value="0.00" class='valor' style='width:100%; font-size:16px; text-align:right; padding-right:10px; height:25px;' onclick='this.select();'/></td>
-				</tr>
-			</table>
-			<br/>
-			<br/>
-			<div style='background-color:#E0DEDE; padding-top:20px; padding-bottom:20px;'>
-			<table style="margin-left: auto; margin-right: auto;">
-				<tr>
-					<td>
-						<div style="position: relative;">
-							<div id='btn_agregar' class='actiongreenbutton' onclick="addDiscount(); return false;" style='padding:5px; font-size:18px;'>Grabar
-							</div>
-						</div>
-					</td>
-					<td>
-						<div style="position: relative;">
-							<div class='actionredbutton' onclick="closePopup(); return false;" id='btn_cancelar' style='padding:5px; font-size:18px;'>Cancelar</div>
-						</div>
-					</td>
-				</tr>
-			</table>
+			<div class="input-group" style='width:80%; margin-left:auto; margin-right:auto;'>
+			<span class="input-group-addon" id='labeladdDiscount'>$ Total Descuento</span>
+			<input class='form-control input-lg' type="number" min='0' onkeypress='soloNumerost(event);'  id="addDiscount" value="0.00" onclick='this.select();'/>
+		    </div>
+			
+			<div id='btn_agregar' class='btn btn-primary btn-lg' onclick="addDiscount(); return false;" style='margin:10px;'>Grabar
 			</div>
+						
+			<div class='btn btn-danger btn-lg' onclick="closePopup(); return false;" id='btn_cancelar' style='margin:10px;'>Cancelar</div>
+					
 		</div>
 	</div>
+	</div>
+</div>
 	
 	
 	<div id="popupScan" style="display: none; background: rgba(255,255,255,0.8); width: 100%; height: 100%; top: 0; left: 0; position: absolute; z-index: 20000; text-align: center;">
@@ -406,22 +341,21 @@
 		<input type="hidden" id="category" value="1"/>
 		<input type="hidden" id="maxPage" value="1"/>
 	</div>
-	<div id="paymentModule">
-<div id="pay" class="popupPayment">
-<br/>
-<br/>
+	
+<div id="paymentModule" class='modal fade'>
+<div id="pay" class="modal-dialog">
 <div id="newCliente"></div>
-	<div class="ventanaprincipal">
+	<div class="ventanaprincipal modal-content">
 		<!--<div id="positionClosePreCuenta" style="position: absolute; left: 96%; top: 0%; z-index: 20;"><img onclick="cancelPayment(); return false;" style="cursor: pointer;" src="../images/xcierre.png"/></div>-->
 		<div style="display: none;" id="json"></div>
 		<form id="referenceToReset">
         <input id="acc" name="acc" type="hidden" value="">
         <input id="echo" name="echo" type="hidden" value=""> 
 			<table style="width: 100%; color: #000000; empty-cells: show;margin-top: -20px;" cellspacing="0" cellpadding="0" border="0">
-				<tr class='encabezadorojo'>
+				<tr>
 					<td colspan='2' style="height:35px; text-align:center; border-top-right-radius:15px; border-top-left-radius:15px; position:relative;">
-						Pago
-						<img src='images/xcierre.png' style='position:absolute; top:2px; right:5px; cursor:pointer;' onclick='$("#pay").fadeOut();'/>
+						<h2>Pago</h2>
+						<img src='images/xcierre.png' style='position:absolute; top:25px; right:12px; cursor:pointer;' onclick='$("#paymentModule").modal("hide");'/>
 						<table width="100%" cellpadding="0" cellspacing="0" style='display:none;'>
 							<tr>
 								<td style="width:20%;">
@@ -446,16 +380,17 @@
 					<td colspan='2'>
 						<table cellpadding="0px" cellspacing="0px" height="100%" align='center'>
 							<tr>
-								<td></td><td><label style='font-size:11px; color:#CCC; font-weight:bold;' id='clientefind'>Consumidor Final</label><br/></td>
+								<td><label style='font-size:11px; color:#CCC; font-weight:bold;' id='clientefind'>Consumidor Final</label><br/></td>
 							</tr>
 							<tr>
-								<td valign="middle" align="right">
-								<div class='actiongreenbutton' style='font-size:bold; margin-top:0px; min-height:25px; height:25px; padding-top:3px;' onclick='BuscarCliente(13);'>
-								<span><img src='images/cliente.png'/></span>&nbsp;Cliente
-								</div>
-								</td>
-								<td valign='middle' align='left'>
-									<input class='valor' name='busquedacliente' id='busquedacliente' style='width:200px; height:15px;' maxlength='13' readonly value='9999999999999'/>									
+								<td valign="middle" align="center">
+								<div class="input-group">
+									<div class="input-group-addon btn btn-primary btn-lg" onclick="BuscarCliente(13);">
+									<span class="glyphicon glyphicon-user"></span>
+									Cliente
+									</div>
+									<input class='form-control' name='busquedacliente' id='busquedacliente' maxlength='13' readonly value='9999999999999'/>	
+								</div>								
 								</td>
 							</tr>
 						</table>
@@ -511,13 +446,13 @@
 							<table align='center'>
                             <tr>
                                 <td>
-        						<div style="width:80px; min-width:80px; height:30px; min-height:30px; float:right; padding-top:5px;" id="payButton" class="actiongreenbutton" onclick="performPurchase('table'); return false;">Pagar</div>
+        						<button style="float:right; margin-right:3px;" id="payButton" class="btn btn-lg btn-primary" onclick="performPurchase('table'); return false;">Pagar</button>
     							</td>
                                 <td>
         						    <div style="display:none; min-width:80px; width:80px; height:30px; min-height:30px; padding-top:5px;" id="payButtonActivated" class='actiongreenbutton'>Pagar</div>
                                 </td>
                                 <td>
-    							    <div id="cancelButton" class='actionredbutton' onclick="cancelPayment(); return false;" style='min-width:80px; width:80px; height:30px; min-height:30px; padding-top:5px;'>Cancelar</div>
+    							    <button id="cancelButton" class='btn btn-danger btn-lg' onclick="cancelPayment(); return false;" style=''>Cancelar</button>
                                 </td>
     						</tr>
                         </table>
@@ -682,11 +617,12 @@
 		</table>
 	</div>
 </div>
-<div id="ModuloCierre" style="position:absolute; top:0px; left:0px; width:100%; background-color:rgba(255,255,255,0.8); text-align:center; height:100%; display:none;">
-<div class='divcierre' style='position:relative;'>
-	Ama
-	<div class='headerPopup'>Cierre de Caja</div>
-	<img src='../../images/xcierre.png' style='cursor:pointer;  position:absolute; right:5px; top:2px;' onclick='$("#ModuloCierre").hide();'/>
+</div>
+<div class="modal fade" id="modalcierre" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="dialog">
+    <div class="modal-content">
+	<div class="modal-header"><h2>Cierre de Caja</h2></div>
+	<div class='modal-body'>
 	<table cellspacing='0px' cellpadding='0px' width='100%'>
 	<tr><td valign='top' width='18%'>
 		<table cellpadding='0px' cellspacing='0px' width='100%' id='menu'>
@@ -694,20 +630,20 @@
 		</table>
 	</td>
 	<td valign='top' style='position:relative; overflow:hidden;'>
-		<div id='forma0' style='position:absolute; top:0px; left:0px; width:100%;' class='divformas'>
+		<div id='forma0' style='width:100%;' class='divformas'>
 			<br/>
 			<table width='75%' cellspacing='10px' cellpadding='0px' align='center'>
 			<tr>
 			</tr>
 			</table>
 			<br/>
-			<table align='center' cellspacing='0px' cellpadding='0px'><tr><td align='right'><div class='labelgris' style='width:180px; height:27px; font-size:18px;' id='labelgris'>Cantidad</div></td><td><input class='valor' type='number' min='0' onkeypress='soloNumerost(event);' style='width:180px; text-align:right; font-size:20px; height:25px; padding-right:10px;' value='0' id='nmonedas' den='' idden='' onchange='ColocarCantidad();'/></td></tr>
-			</table>
+			<div class="input-group" style='margin-left:auto; margin-right:auto;'>
+			<span class="input-group-addon" id='labelgris'>Cantidad</span><input type='number' min='0' onkeypress='soloNumerost(event);' value='0' id='nmonedas' den='' idden='' onchange='ColocarCantidad();' class='form-control input-lg'/></div>
 			<br/>
 			<div style='font-size:20px; font-weight:bold; text-align:center;'> Total Efectivo: $ <input id='totalEfectivo' class='totalesc' value='0.00' elemento='subtotales' formapago='0' style='width:150px; border:none; font-size:20px; font-weight:bold;'/></div>
 			<br/>
 			<div align='center'>
-			<div class='actionredbutton' style='width:70px; min-height:10px; padding:5px;' onclick='Desplazar(0);'>Ver Totales</div>
+			<button class='btn btn-danger' onclick='Desplazar(0);'>Ver Totales</button>
 			</div>
 			<br/>
 		</div>
@@ -726,14 +662,14 @@
 	</td>
 	</tr>
 	</table>
+	</div>
+	</div>
+	</div>
 </div>
 </div>
 </div>
 </div>
-</div>
-</div>
-
 <script>
-	init();
+	Init3();
 	app.initialize();
 </script>

@@ -68,7 +68,7 @@ $('.resetPayment').click(function(){
 	$('.paymentMethods').change();
 });
 	
-$('.resetPayment').on('mouseover',function(){
+/*$('.resetPayment').on('mouseover',function(){
 	var buscarID = $(this).attr('id');
 	$(this).attr('src', '../../images/'+ buscarID +'Hover.png');
 });
@@ -76,7 +76,7 @@ $('.resetPayment').on('mouseover',function(){
 $('.resetPayment').on('mouseout',function(){
 	var buscarID = $(this).attr('id');
 	$(this).attr('src', '../../images/'+ buscarID +'.png');
-});
+});*/
 	
 $('.intPayment').click(function(){
 	var calculateCeil = Math.ceil(parseFloat($('#invoiceTotal').html()));
@@ -102,7 +102,7 @@ $('.paymentMethods').change(function(){
 	updateForm(value);
 	});
 	
-$('.buttonsPayment').on('mouseover',function(){
+/*$('.buttonsPayment').on('mouseover',function(){
 	var buscarID = $(this).attr('id');
 	$(this).attr('src', '../../images/'+ buscarID +'Hover.png');
 	});
@@ -110,7 +110,7 @@ $('.buttonsPayment').on('mouseover',function(){
 $('.buttonsPayment').on('mouseout',function(){
 	var buscarID = $(this).attr('id');
 	$(this).attr('src', '../../images/'+ buscarID +'.png');
-	});
+	});*/
 
 	
 
@@ -1831,14 +1831,14 @@ function CambiarMetodo(cual){
 	//$("#paymentCategory-"+cual).click();
 	var nombre=$('#payment'+cual).attr('paymentMethod');
 	var index=$('#payment'+cual).attr('idPaymentMethod');
-	var idimagen=$('#paymentCategory-'+index+' .originalImage').attr('id').split('_');
+	//var idimagen=$('#paymentCategory-'+index+' .originalImage').attr('id').split('_');
 	//alert(nombre);
-	$('.originalImage').each(function(){
+	/*$('.originalImage').each(function(){
 		var getImage = $(this).attr('id').split('_');
 		$(this).attr('src','../../images/'+ getImage[1] +'.png');
-		});
+		});*/
 
-	$('#pagos_'+ nombre).attr('src', '../../images/'+idimagen[1]+'Hover.png');
+	//$('#pagos_'+ nombre).attr('src', '../../images/'+idimagen[1]+'Hover.png');
 	$('.textoformapago').css('color','#58595B');
 	$('#forma_'+index).css('color','#FFF');
 	$('.functionalityDiv').hide();
